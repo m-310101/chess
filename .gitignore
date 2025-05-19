@@ -134,3 +134,7 @@ dmypy.json
 # VS Code stuff
 .vscode
 *.code-workspace
+
+# Local reference materials
+/local-reference/
+/local-reference/**/*
