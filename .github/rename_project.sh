@@ -20,8 +20,8 @@ original_author="m-310101"
 original_name="chess"
 original_urlname="chess"
 original_description="Awesome chess created by m-310101"
-# for filename in $(find . -name "*.*") 
-for filename in $(git ls-files) 
+# for filename in $(find . -name "*.*")
+for filename in $(git ls-files)
 do
     sed -i "s/$original_author/$author/g" $filename
     sed -i "s/$original_name/$name/g" $filename

@@ -1,5 +1,9 @@
-# This template is a low-dependency template. 
-# By default there is no requirements added here.
-# Add the requirements you need to this file.
-# or run `make init` to create this file automatically based on the template.
-# You can also run `make switch-to-poetry` to use the poetry package manager.
+cfgv==3.4.0
+distlib==0.3.9
+filelock==3.18.0
+identify==2.6.10
+nodeenv==1.9.1
+platformdirs==4.3.8
+pre_commit==4.2.0
+PyYAML==6.0.2
+virtualenv==20.31.2
