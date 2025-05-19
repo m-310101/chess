@@ -1,0 +1,153 @@
+@startuml chess_class_diagram
+
+' Enable UML2 style arrows
+skinparam style strictuml
+left to right direction
+
+' Enums
+enum PieceColor {
+  WHITE
+  BLACK
+}
+
+enum GameStatus {
+  ONGOING
+  CHECK
+  CHECKMATE
+  STALEMATE
+  DRAW
+}
+
+' Abstract Classes
+abstract class ChessPiece {
+  - PieceColor color
+  - bool hasMoved
+  + {abstract} getValidMoves(board: ChessBoard): List<Move>
+  + {abstract} getValue(): int
+  + {abstract} toString(): String
+}
+
+abstract class Player {
+  - PieceColor color
+  + {abstract} makeMove(board: ChessBoard): Move
+}
+
+' Concrete Piece Classes
+class Pawn {
+  + getValidMoves(board: ChessBoard): List<Move>
+  + getValue(): int
+  + toString(): String
+}
+
+class Rook {
+  + getValidMoves(board: ChessBoard): List<Move>
+  + getValue(): int
+  + toString(): String
+}
+
+class Knight {
+  + getValidMoves(board: ChessBoard): List<Move>
+  + getValue(): int
+  + toString(): String
+}
+
+class Bishop {
+  + getValidMoves(board: ChessBoard): List<Move>
+  + getValue(): int
+  + toString(): String
+}
+
+class Queen {
+  + getValidMoves(board: ChessBoard): List<Move>
+  + getValue(): int
+  + toString(): String
+}
+
+class King {
+  + getValidMoves(board: ChessBoard): List<Move>
+  + getValue(): int
+  + toString(): String
+  + isInCheck(board: ChessBoard): bool
+}
+
+' Other Core Classes
+class ChessBoard {
+  - squares: Piece[8][8]
+  - moveHistory: List<Move>
+  - currentPlayer: PieceColor
+  - gameStatus: GameStatus
+  + getPieceAt(position: Position): ChessPiece
+  + makeMove(move: Move): bool
+  + undoMove(): void
+  + isCheck(color: PieceColor): bool
+  + isCheckmate(color: PieceColor): bool
+  + isStalemate(color: PieceColor): bool
+  + toFEN(): String
+}
+
+class Position {
+  - file: char ('a'-'h')
+  - rank: int (1-8)
+  + isValid(): bool
+  + toString(): String
+  + equals(other: Position): bool
+}
+
+class Move {
+  - from: Position
+  - to: Position
+  - piece: ChessPiece
+  - capturedPiece: ChessPiece
+  - promotionPiece: ChessPiece
+  - isCastling: bool
+  - isEnPassant: bool
+  + toString(): String
+  + equals(other: Move): bool
+}
+
+class Game {
+  - board: ChessBoard
+  - whitePlayer: Player
+  - blackPlayer: Player
+  + start(): void
+  + end(): void
+  + saveGame(): void
+  + loadGame(): void
+}
+
+class HumanPlayer {
+  + makeMove(board: ChessBoard): Move
+}
+
+class AIPlayer {
+  - searchDepth: int
+  + makeMove(board: ChessBoard): Move
+  + evaluateBoard(board: ChessBoard): int
+  + minimax(board: ChessBoard, depth: int): Move
+}
+
+' Relationships
+ChessPiece <|-- Pawn
+ChessPiece <|-- Rook
+ChessPiece <|-- Knight
+ChessPiece <|-- Bishop
+ChessPiece <|-- Queen
+ChessPiece <|-- King
+
+Player <|-- HumanPlayer
+Player <|-- AIPlayer
+
+ChessBoard "1" *-- "64" Position
+ChessBoard "1" *-- "*" Move
+ChessBoard "1" o-- "32" ChessPiece
+
+Move "1" *-- "2" Position
+Move "1" --> "1" ChessPiece
+
+Game "1" *-- "1" ChessBoard
+Game "1" *-- "2" Player
+
+PieceColor <|-- ChessPiece
+PieceColor <|-- Player
+
+@enduml
