@@ -1,4 +1,4 @@
-@startuml chess_class_diagram
+@startuml chess_impl_class_diagram
 
 ' Enable UML2 style arrows
 skinparam style strictuml
