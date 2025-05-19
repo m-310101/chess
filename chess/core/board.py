@@ -10,12 +10,12 @@ class ChessBoard:
             [None for _ in range(self.width)] for _ in range(self.height)
         ]
 
-    def getBoard(self) -> list[list[ChessPiece | None]]:
+    def get_board(self) -> list[list[ChessPiece | None]]:
         return self.squares
 
-    def getPieceAt(self, position: Position) -> ChessPiece | None:
+    def get_piece_at(self, position: Position) -> ChessPiece | None:
         pass
 
-    def toFEN(self) -> str:
+    def to_FEN(self) -> str:
         # TODO: create logic to return FEN representation of board https://www.chess.com/terms/fen-chess (add FEN letters to piece class)
         pass
