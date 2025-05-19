@@ -138,3 +138,10 @@ dmypy.json
 # Local reference materials
 /local-reference/
 /local-reference/**/*
+
+# Excluded generated diagram images
+/docs/diagrams/
+
+# Exclude any generated PlantUML cache files
+*.puml.cache
+*.wsd.cache

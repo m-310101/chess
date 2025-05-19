@@ -5,12 +5,23 @@ repos:
     -   id: check-yaml
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
--   repo: https://github.com/pycqa/isort
+-   repo: https://github.com/shellcheck-py/shellcheck-py # shell formatter/checker
+    rev: v0.10.0.1
+    hooks:
+    -   id: shellcheck
+-   repo: local
+    hooks:
+    -   id: generate-uml-diagrams
+        name: Generate UML diagrams # generator of UML diagrams based on modified files
+        entry: bash -c 'if git diff --cached --name-only --diff-filter=ACM | grep -qE "docs/uml/.*\.(puml|wsd|pu)$"; then ./scripts/generate_docs.sh && git add docs/diagrams/; fi'
+        language: system
+        pass_filenames: false
+-   repo: https://github.com/pycqa/isort # python import alphabetizer
     rev: 6.0.1
     hooks:
     -   id: isort
         args: ["--profile", "black", "--filter-files"]
--   repo: https://github.com/psf/black
+-   repo: https://github.com/psf/black # python code formatter
     rev: 25.1.0
     hooks:
     -   id: black
