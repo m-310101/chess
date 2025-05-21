@@ -1,4 +1,5 @@
-from pieces import ChessPiece, Position
+from moves import Position
+from pieces import ChessPiece
 
 
 class ChessBoard:
