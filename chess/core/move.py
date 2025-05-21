@@ -23,3 +23,12 @@ class Position:
 
     def get_x_y(self, board_height: int = 8) -> tuple[int, int]:
         return (ord(self.file) - CHAR_ORD_OFFSET), (board_height - self.rank)
+
+
+class Move:
+    """
+    Represents a move on the chessboard
+    """
+
+    def __init__(self) -> None:
+        pass
