@@ -1,4 +1,4 @@
-from moves import Position
+from move import Position
 from pieces import ChessPiece
 
 
