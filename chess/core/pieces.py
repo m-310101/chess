@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from enum import Enum
 
+from board import ChessBoard
+
 CHAR_ORD_OFFSET: int = 97  # character ordinal representation offset
 
 
@@ -49,3 +51,6 @@ class ChessPiece:
 
     def get_piece_colour(self) -> PieceColour:
         return self.colour
+
+    def get_valid_moves(self, board: "ChessBoard") -> "list[Move]":
+        raise NotImplementedError
